@@ -14,3 +14,12 @@ after_success:
   - docker build -t praneeth/multi-nginx ./nginx 
   - docker build -t praneeth/multi-server ./server 
   - docker build -t praneeth/multi-worker ./worker 
+
+  # Logging in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" -- password-stdin
+
+  # pushing images to docker hub
+  - docker push praneeth/multi-client
+  - docker push praneeth/multi-nginx
+  - docker push praneeth/multi-server
+  - docker push praneeth/multi-worker
