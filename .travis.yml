@@ -1,0 +1,16 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t praneeth/react-test -f ./client/Dockerfie.dev .
+
+script:
+  - docker run -e CI=true praneeth/react-test npm test 
+
+after_success:
+  - docker build -t praneeth/multi-client ./client 
+  - docker build -t praneeth/multi-nginx ./nginx 
+  - docker build -t praneeth/multi-server ./server 
+  - docker build -t praneeth/multi-worker ./worker 
