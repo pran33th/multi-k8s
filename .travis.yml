@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t praneeth/react-test -f ./client/Dockerfie.dev .
+  - docker build -t praneeth/react-test -f ./client/Dockerfile.dev .
 
 script:
   - docker run -e CI=true praneeth/react-test npm test 
