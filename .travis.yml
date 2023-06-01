@@ -4,22 +4,22 @@ services:
   - docker
 
 before_install:
-  - docker build -t praneeth/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t pr2n33th/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true praneeth/react-test npm test 
+  - docker run -e CI=true pr2n33th/react-test npm test 
 
 after_success:
-  - docker build -t praneeth/multi-client ./client 
-  - docker build -t praneeth/multi-nginx ./nginx 
-  - docker build -t praneeth/multi-server ./server 
-  - docker build -t praneeth/multi-worker ./worker 
+  - docker build -t pr2n33th/multi-client ./client 
+  - docker build -t pr2n33th/multi-nginx ./nginx 
+  - docker build -t pr2n33th/multi-server ./server 
+  - docker build -t pr2n33th/multi-worker ./worker 
 
   # Logging in to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # pushing images to docker hub
-  - docker push praneeth/multi-client
-  - docker push praneeth/multi-nginx
-  - docker push praneeth/multi-server
-  - docker push praneeth/multi-worker
+  - docker push pr2n33th/multi-client
+  - docker push pr2n33th/multi-nginx
+  - docker push pr2n33th/multi-server
+  - docker push pr2n33th/multi-worker
