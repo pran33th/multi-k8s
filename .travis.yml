@@ -16,7 +16,7 @@ after_success:
   - docker build -t praneeth/multi-worker ./worker 
 
   # Logging in to Docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" -- password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # pushing images to docker hub
   - docker push praneeth/multi-client
